@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'card_content.dart';
+import 'resuable_card.dart';
+
+const bottomContainerHeight = 60.0;
+final activeCardColor = Color(0xFF1D1E33);
+const bottomContainerColor = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
   @override
@@ -12,15 +19,65 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
       ),
-      body: Center(
-        child: Text('Body Text'),
-      ),
-      floatingActionButton: Theme(
-        data: ThemeData(accentColor: Colors.purple),
-        child: FloatingActionButton(
-          child: Icon(Icons.add),
-        ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                    cardChild: CardContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                    cardChild: CardContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ReusableCard(
+              colour: activeCardColor,
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            color: bottomContainerColor,
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          )
+        ],
       ),
     );
   }
 }
+
+
+
+
